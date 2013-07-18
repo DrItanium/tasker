@@ -39,6 +39,8 @@
   (slot note-count
         (type INTEGER)
         (range 0 ?VARIABLE))
+  (slot priority
+        (type NUMBER))
   (multislot notes
              (type INSTANCE)
              (allowed-classes Note))
@@ -55,23 +57,30 @@
                     (eq ?self:status ?status))
 
 (defmessage-handler Task close primary
-                    ()
+                    (?reason)
                     (if (neq ?self:status closed) then
-                      (bind ?self:status closed)))
+                      (bind ?self:status closed)
+                      (send ?self new-note 
+                       (format nil "Closed task: %n%s" ?reason))))
+
 
 (defmessage-handler Task note# primary
                     (?index)
                     (nth$ ?index ?self:notes))
 
 (defmessage-handler Task reopen primary
-                    ()
+                    (?reason)
                     (if (eq ?self:status closed) then
-                      (bind ?self:status reopened)))
+                      (bind ?self:status reopened)
+                      (send ?self new-note
+                       (format nil "Reopened task: %n%s" ?reason))))
 
 (defmessage-handler Task postpone primary
-                    ()
+                    (?reason)
                     (if (not (neq ?self:status open reopened)) then
-                      (bind ?self:status postponed)))
+                      (bind ?self:status postponed)
+                      (bind ?self new-note 
+                       (format nil "Postponed task: %n%s" ?reason))))
 
 (defmessage-handler Task new-note primary
                     (?message)
@@ -85,7 +94,7 @@
 
 (defmessage-handler Task note-id primary
                     ()
-                    (bind ?nid ?self:note-index)
-                    (bind ?self:note-index (+ ?nid 1))
+                    (bind ?nid ?self:note-count)
+                    (bind ?self:note-count (+ ?nid 1))
                     (return ?nid))
 
