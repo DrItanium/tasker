@@ -1,0 +1,8 @@
+Tasker is a library/tool for keeping track of tasks. 
+
+It is meant to be quite simple so the actual library consists of two classes
+and a small number of messages. 
+
+A task consists of a series of notes and is able to be opened, closed,
+postponed, and reopened. A note is an immutable piece of information that is
+attached to a task to give it context
