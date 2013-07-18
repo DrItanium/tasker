@@ -27,6 +27,8 @@
 ;------------------------------------------------------------------------------
 ; Frontend.clp - Contains functions to streamline the process of using tasks 
 ;------------------------------------------------------------------------------
+(batch* "Task.clp")
+;------------------------------------------------------------------------------
 (defgeneric tasker:new)
 (defgeneric tasker:close-task)
 (defgeneric tasker:reopen-task)

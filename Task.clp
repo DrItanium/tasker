@@ -79,7 +79,7 @@
                     (?reason)
                     (if (not (neq ?self:status open reopened)) then
                       (bind ?self:status postponed)
-                      (bind ?self new-note 
+                      (send ?self new-note 
                        (format nil "Postponed task: %n%s" ?reason))))
 
 (defmessage-handler Task new-note primary
