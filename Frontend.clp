@@ -119,13 +119,9 @@
   (do-for-all-instances 
     ((?z Task)) 
     (not (neq (send ?z get-status) open reopened))
-    (printout t 
-              (format nil "%s - %s" 
+    (printout t (format nil "%s - %s" 
                       (instance-name-to-symbol (instance-name ?z))
-                      (send ?z get-title)) crlf)
-    (progn$ (?note (send ?z get-notes))
-            (printout t (send ?note get-message) crlf))
-    (printout t crlf crlf)))
+                      (send ?z get-title)) crlf)))
 ;------------------------------------------------------------------------------
 (defmethod tasker:closed-tasks
   ()
