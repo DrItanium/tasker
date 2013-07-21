@@ -33,7 +33,7 @@
 (defglobal MAIN
            ; Change the value of this global to change the name of the
            ; corresponding shell variable.
-           ?*electron-fs-root* = ElectronFSRoot
+           ?*electron-fs-root* = TaskerFSRoot
            ; Use this to make sure that we fail out if we can't bootstrap
            ?*fsys* = (progn (bind ?result (get-shell-variable ?*electron-fs-root*))
                             (if (not ?result) then

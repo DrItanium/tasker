@@ -1,7 +1,7 @@
 #!/bin/bash
 # Simple tasker execution script
 pushd .
-export $ElectronFSRoot=$HOME/.tasker/
-cd $ElectronFSRoot
+export $TaskerFSRoot=$HOME/.tasker/
+cd $TaskerFSRoot
 bin/electron -f2 bin/tasker.clp
 popd 
