@@ -30,6 +30,12 @@
 ; Electron-Filesystem aware
 (import batch* "tasker/Task.clp")
 ;------------------------------------------------------------------------------
+(defglobal MAIN
+ ; Name of the current tasks
+ ?*current-tasks-file-name* = current.tasks
+ ?*current-tasks-path* = (format nil "%s/%s" ?*data* ?*current-tasks-file-name*)
+ )
+;------------------------------------------------------------------------------
 (defgeneric tasker:new)
 (defgeneric tasker:close-task)
 (defgeneric tasker:reopen-task)
@@ -62,7 +68,6 @@
    (?description LEXEME))
   (tasker:new-note ?parent ?description))
 ;------------------------------------------------------------------------------
-
 (defmethod tasker:new-task
   ((?title LEXEME)
    (?description LEXEME)
@@ -77,7 +82,6 @@
   ((?title LEXEME)
    (?description LEXEME))
   (tasker:new-task ?title ?description 0))
-
 ;------------------------------------------------------------------------------
 (defmethod tasker:new-note
   ((?parent INSTANCE Task) 
@@ -157,6 +161,14 @@
 (defmethod tasker:load-tasks
  ((?path LEXEME))
  (load-instances ?path))
+
+(defmethod tasker:load-tasks
+ ()
+ (tasker:load-tasks ?*current-tasks-path*))
+
+(defmethod tasker:save-tasks
+ ()
+ (tasker:save-tasks ?*current-tasks-path*))
 ;------------------------------------------------------------------------------
 (defmethod tasker:read-task
  ((?task INSTANCE Task))
