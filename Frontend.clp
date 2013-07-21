@@ -27,7 +27,8 @@
 ;------------------------------------------------------------------------------
 ; Frontend.clp - Contains functions to streamline the process of using tasks 
 ;------------------------------------------------------------------------------
-(batch* "Task.clp")
+; Electron-Filesystem aware
+(import batch* "tasker/Task.clp")
 ;------------------------------------------------------------------------------
 (defgeneric tasker:new)
 (defgeneric tasker:close-task)

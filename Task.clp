@@ -27,7 +27,9 @@
 ;------------------------------------------------------------------------------
 ; Task.clp - Represents something to do
 ;------------------------------------------------------------------------------
-(load* Note.clp)
+;electron-filesystem enabled
+(import load* "tasker/Note.clp")
+
 (defclass Task
   (is-a USER)
   (slot title
