@@ -3,3 +3,4 @@ bin/electron
 bin/tasker
 *.o 
 *.swp
+data/*.tasks
