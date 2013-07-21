@@ -1,3 +1,18 @@
+Tasker is a library/tool for keeping track of tasks. 
+
+It is meant to be quite simple so the actual library consists of two classes
+and a small number of messages. 
+
+A task consists of a series of notes and is able to be opened, closed,
+postponed, and reopened. A note is an immutable piece of information that is
+attached to a task to give it context
+
+This tool now depends on electron with environment variable support. It also
+now uses the electron filesystem to make it a self-contained application.
+==============================================================================
+The README accompanying the electron-filesystem:
+
+
 This is the default filesystem that I use to write self contained programs that
 use electron. This is possible due to the inclusion of shell variable access in
 newer versions of electron.
