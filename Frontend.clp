@@ -82,6 +82,11 @@
   ((?parent INSTANCE Task) 
    (?description LEXEME))
   (send ?parent new-note ?description))
+
+(defmethod tasker:new-note
+ ((?parent SYMBOL)
+  (?description LEXEME))
+ (tasker:new-note (symbol-to-instance-name ?parent) ?description))
 ;------------------------------------------------------------------------------
 (defmethod tasker:close-task
   ((?task INSTANCE Task)
