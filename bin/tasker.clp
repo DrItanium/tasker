@@ -50,3 +50,5 @@
 (load* (format nil "%s/import/import.clp" ?*lib*))
 ; Load the tasker code
 (import batch* "tasker/Frontend.clp")
+; Load the current tasks
+(tasker:load-tasks)
